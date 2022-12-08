@@ -4117,6 +4117,11 @@ class Axes(_AxesBase):
         if zorder is None:
             zorder = mlines.Line2D.zorder
 
+        # Set the default capstyle to "butt" to prevent
+        # visual overlap between the boxplot and median line
+        if medianprops.get('solid_capstyle') is None or medianprops.get('solid_capstyle', None) is None:
+            medianprops['solid_capstyle'] = 'butt'
+        # draw the median line below the boxplot for clarity
         zdelta = 0.1
 
         def merge_kw_rc(subkey, explicit, zdelta=0, usemarker=True):
