@@ -3367,6 +3367,13 @@ def test_boxplot_zorder():
     assert ax.boxplot(x, zorder=10)['boxes'][0].get_zorder() == 10
 
 
+@check_bool()
+def test_bool_sharex_sharey(ncols_test, sharex_test, sharey_test): 
+    x = np.arange(10)
+    fix, ax = plt.subplots()
+    assert plt.subplots(sharex=1)
+    assert plt.subplots(sharey=0)
+
 @check_figures_equal()
 def test_boxplot_median_bound(fig_test, fig_ref):
     test_data = np.arange(3)
